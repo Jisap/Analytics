@@ -6,6 +6,8 @@ import {
 } from "@/components/ui/popover"
 import { Menu } from "lucide-react"
 import Logo from "./Logo"
+import MobileMenu from "./MobileMenu"
+import { navMenu } from "@/constants"
 
 const Header = () => {
   return (
@@ -25,7 +27,7 @@ const Header = () => {
           </PopoverTrigger>
 
           <PopoverContent>
-            Menu
+            <MobileMenu navMenu={navMenu} />
           </PopoverContent>
         </Popover>
 
