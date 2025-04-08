@@ -8,12 +8,72 @@ import { Menu } from "lucide-react"
 import Logo from "./Logo"
 import MobileMenu from "./MobileMenu"
 import { navMenu } from "@/constants"
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu"
+
 
 const Header = () => {
   return (
     <header className="border h-16 grid grid-cols-1 items-center md:h-20 lg:h-24">
       <div className="container flex justify-between">
         <Logo variant="icon"/>
+
+        <NavigationMenu className="max-lg:hidden mx-auto">
+          <NavigationMenuList>
+            {navMenu.map(({ href, label, submenu }, index) => (
+              <NavigationMenuItem key={index}>
+                {submenu ? (
+                  <>
+                    <NavigationMenuTrigger>
+                      {label}
+                    </NavigationMenuTrigger>
+
+                    <NavigationMenuContent>
+                      <ul>
+                        {submenu.map(({ href, icon, label, desc }, index) => (
+                          <li key={index}>
+                            <NavigationMenuLink asChild>
+                              <a href={href}>
+                                <div>
+                                  {icon}
+                                </div>
+
+                                <div>
+                                  <div>
+                                    {label}
+                                  </div>
+                                  <p>
+                                    {desc}
+                                  </p>
+                                </div>
+                              </a>
+                            </NavigationMenuLink>
+                          </li>
+                        ))}
+                      </ul>
+                    </NavigationMenuContent>
+                  </>
+                ):(
+                  <NavigationMenuLink 
+                    href={href} 
+                    className={navigationMenuTriggerStyle()}
+                  >
+                    {label}
+                  </NavigationMenuLink>
+                )}
+              </NavigationMenuItem>
+            ))}
+          </NavigationMenuList>
+        </NavigationMenu>
 
         <Popover>
           <PopoverTrigger asChild>
@@ -33,7 +93,6 @@ const Header = () => {
             <MobileMenu navMenu={navMenu} />
           </PopoverContent>
         </Popover>
-
       </div>
     </header>
   )
