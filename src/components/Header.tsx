@@ -38,12 +38,12 @@ const Header = () => {
                     </NavigationMenuTrigger>
 
                     <NavigationMenuContent>
-                      <ul>
+                      <ul className="grid grid-cols-2 gap-2 p-2 w-[640px]">
                         {submenu.map(({ href, icon, label, desc }, index) => (
                           <li key={index}>
                             <NavigationMenuLink asChild>
-                              <a href={href}>
-                                <div>
+                              <a href={href} className="flex gap-3 select-none p-2 rounded-sm transition-color hover:bg-foreground/5">
+                                <div className="w-10 h-10 bg-foreground/10 rounded-sm shadow-sm border-t border-foreground/5 flex-shrink-0 grid place-items-center">
                                   {icon}
                                 </div>
 
