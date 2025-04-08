@@ -32,7 +32,7 @@
     --radius: 0.5rem;
   }
 
-  .dark {
+  /* .dark {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
     --card: 240 10% 3.9%;
@@ -57,7 +57,7 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
-  }
+  } */
 }
 
 .dark {
@@ -93,7 +93,17 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground h-[300vh];
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-foreground/20 rounded-full
+
+    hover:bg-foreground/30;
   }
 }
 
@@ -101,6 +111,7 @@
   .container {
     @apply px-4 mx-auto
     /* Responsive for xl screen */
+    /* En pantallas 2xl (1536px) el contenedor no se expande más alla de 1280px */
     2xl:max-w-screen-xl;
   }
 
