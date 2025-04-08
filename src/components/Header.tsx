@@ -26,7 +26,10 @@ const Header = () => {
             </Button>
           </PopoverTrigger>
 
-          <PopoverContent>
+          <PopoverContent 
+            align="end"
+            className="bg-background/50 backdrop-blur-3xl border-foreground/5 border-x-0 border-b-0 rounded-lg overflow-hidden"   
+          >
             <MobileMenu navMenu={navMenu} />
           </PopoverContent>
         </Popover>
