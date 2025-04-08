@@ -24,7 +24,7 @@ import {
 const Header = () => {
   return (
     <header className="border h-16 grid grid-cols-1 items-center md:h-20 lg:h-24">
-      <div className="container flex justify-between">
+      <div className="container flex justify-between lg:grid grid-cols-[1fr,3fr,1fr]">
         <Logo variant="icon"/>
 
         <NavigationMenu className="max-lg:hidden mx-auto">
@@ -48,10 +48,10 @@ const Header = () => {
                                 </div>
 
                                 <div>
-                                  <div>
+                                  <div className="text-[13px] leading-normal mb-1">
                                     {label}
                                   </div>
-                                  <p>
+                                  <p className="text-[13px] leading-normal text-muted-foreground">
                                     {desc}
                                   </p>
                                 </div>
@@ -74,6 +74,16 @@ const Header = () => {
             ))}
           </NavigationMenuList>
         </NavigationMenu>
+
+        <div className="max-lg:hidden flex items-center justify-end gap-2">
+          <Button variant="ghost">
+            Sign In
+          </Button>
+
+          <Button>
+            Free Trial
+          </Button>
+        </div>
 
         <Popover>
           <PopoverTrigger asChild>
