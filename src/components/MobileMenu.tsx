@@ -6,6 +6,7 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible"
 import { ChevronsUpDown } from "lucide-react"
+import { Separator } from "@/components/ui/separator"
 
 
 type MobileMenuProps = {
@@ -15,7 +16,7 @@ type MobileMenuProps = {
 const MobileMenu = ({ navMenu }: MobileMenuProps) => {
   return (
     <div>
-      <ul>
+      <ul className="mb-3">
         {navMenu.map(({ href, label, submenu }, index) => (
           <li key={index}>
             {submenu ? (
@@ -61,6 +62,23 @@ const MobileMenu = ({ navMenu }: MobileMenuProps) => {
           </li>
         ))}
       </ul>
+
+      <Separator className="bg-muted-foreground/20" />
+
+      <div className="flex items-center gap-2 mt-4">
+        <Button
+          variant="ghost"
+          className="w-full"
+        >
+          Sign In
+        </Button>
+
+        <Button
+          className="w-full"
+        >
+          Free Trial
+        </Button>
+      </div>
     </div>
   )
 }
