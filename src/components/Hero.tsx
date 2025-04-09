@@ -109,14 +109,31 @@ const Hero = () => {
         </div>
 
         <div className="relative mt-12 max-w-screen-xl mx-auto isolate rounded-xl mt:mt-16"> 
-          <figure className="bg-background/60 border border-slate-800 backdrop-blur-3xl rounded-xl shadow-2xl overflow-hidden">
+          <motion.figure 
+            initial={{
+              y: 120,
+              opacity: 0,
+              filter: "blur(5px)",
+            }}  
+            animate={{
+              y: 0,
+              opacity: 1,
+              filter: "blur(0px)",
+              transition: {
+                duration: 1.5,
+                delay: 0.5,
+                ease: "backInOut",
+              }
+            }}
+            className="bg-background/60 border border-slate-800 backdrop-blur-3xl rounded-xl shadow-2xl overflow-hidden"
+          >
             <img 
               src={heroBanner} 
               alt="hero-banner" 
               width={1468}
               height={815}  
             />
-          </figure>
+          </motion.figure>
 
           {/* Blurry glow effect */}
           <div className="absolute bg-primary inset-5 blur-[50px] -z-10"></div>
