@@ -9,7 +9,10 @@ import {
 import { AspectRatio } from "@/components/ui/aspect-ratio"
 import ReactPlayer from 'react-player/youtube'
 import { CirclePlay } from "lucide-react";
-import { motion, Variants } from "motion/react"
+import { motion, Variants, useScroll, useSpring, useTransform } from "motion/react"
+import { useRef } from "react";
+
+ 
 
 const heroChildVariants: Variants = {
   start: {
@@ -33,13 +36,31 @@ const heroVariant: Variants = {
   end: {
     transition: {
       staggerChildren: 0.4,
-    
     }
   }
-
 }
 
 const Hero = () => {
+  
+  const heroBannerRef= useRef<HTMLElement>(null);
+
+  const { scrollYProgress } = useScroll({          // Rastrea el progreso del scroll relativo a un elemento.
+    target: heroBannerRef,                         // El elemento a rastrear
+    offset: [                                      // Define cómo se calcula el progreso del scrol
+      "start 1080px",                              // El progreso comienza cuando la parte superior del elemento está a 1080px desde la parte superior de la ventana.
+      "50% start"                                  // El progreso termina cuando el centro del elemento (50%) alcanza la parte superior de la ventana 
+    ],         
+  }); // El resultado es un valor normalizado (scrollYProgress) que varía entre 0 y 1:
+
+  const scrollYTransform = useTransform(scrollYProgress, [0, 1], [0.85, 1.15]); // Toma un valor reactivo (scrollYProgress) y lo transforma en otro valor: 0 -> 0.85 y 1 -> 1.15. Estos valores son aplicados a la prop scale 
+  
+  const scale = useSpring(scrollYTransform, {      // Suaviza el valor transformado (scrollYTransform) para que los cambios sean más fluidos.
+
+    stiffness: 300,                                // Controla la velocidad de la animación 
+    damping: 30,                                   // Controla cuánto "rebota" la animación (valores más altos reducen el rebote).
+    restDelta: 0.001,                              // Define la precisión con la que la animación debe detenerse.
+  }); // El resultado es un valor reactivo (scale) que cambia suavemente entre 0.85 y 1.15 a medida que el usuario hace scroll.
+
   return (
     <section className="py-1o md:py-16">
       <motion.div 
@@ -119,12 +140,14 @@ const Hero = () => {
               y: 0,
               opacity: 1,
               filter: "blur(0px)",
-              transition: {
-                duration: 1.5,
-                delay: 0.5,
-                ease: "backInOut",
-              }
             }}
+            transition= {{
+              duration: 1.5,
+              delay: 0.5,
+              ease: "backInOut",
+            }}
+            ref={heroBannerRef}
+            style={{ scale }}
             className="bg-background/60 border border-slate-800 backdrop-blur-3xl rounded-xl shadow-2xl overflow-hidden"
           >
             <img 
