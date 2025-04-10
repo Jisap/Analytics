@@ -1,5 +1,8 @@
 import { featureData } from "@/constants"
 import { motion } from "motion/react"
+import FeatureCard from "./FeatureCard"
+import { Button } from "./ui/button"
+import { ArrowRight } from "lucide-react"
 
 
 
@@ -26,9 +29,35 @@ const Feature = () => {
 
         <div>
           {featureData.features.map(({ icon, iconBoxColor, title, desc, imgSrc }, index) => (
-            <div>
-              Feature Card
-            </div>
+            <FeatureCard key={index}>
+              <>
+                <div>
+                  <motion.div className={`${iconBoxColor}`}>
+                    {icon}
+                  </motion.div>
+
+                  <motion.h3>
+                    {title}
+                  </motion.h3>
+
+                  <motion.p>
+                    {desc}
+                  </motion.p>
+
+                  <motion.div>
+                    <Button variant="link" className="">
+                      Learn More <ArrowRight />
+                    </Button>
+                  </motion.div>
+                </div>
+
+                {imgSrc && (
+                  <motion.figure>
+                    <img src={imgSrc} alt={title} className="img-cover" />
+                  </motion.figure>
+                )}
+              </>
+            </FeatureCard>
           ))}
         </div>
       </div>
