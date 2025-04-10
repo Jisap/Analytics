@@ -1,3 +1,4 @@
+import Brand from "./components/Brand"
 import Header from "./components/Header"
 import Hero from "./components/Hero"
 import { ReactLenis } from 'lenis/react'
@@ -12,6 +13,7 @@ const App = () => {
 
         <main>
           <Hero />
+          <Brand />
         </main>
       </div>
     </ReactLenis>
