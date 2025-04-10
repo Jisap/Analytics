@@ -27,32 +27,38 @@ const Feature = () => {
           </motion.p>
         </div>
 
-        <div>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-6">
           {featureData.features.map(({ icon, iconBoxColor, title, desc, imgSrc }, index) => (
-            <FeatureCard key={index}>
+            <FeatureCard 
+              key={index} 
+              classes={index < 2 ? "md:col-span-2 lg:col-span-1 xl:col-span-3" : "xl:col-span-2"}
+            >
               <>
-                <div>
-                  <motion.div className={`${iconBoxColor}`}>
+                <div className="p-8">
+                  <motion.div className={`w-16 h-16 grid place-items-center rounded-full flex-shrink-0 ${iconBoxColor}`}>
                     {icon}
                   </motion.div>
 
-                  <motion.h3>
+                  <motion.h3 className="text-foreground text-xl font-medium mt-4 mb-3">
                     {title}
                   </motion.h3>
 
-                  <motion.p>
+                  <motion.p className="text-muted-foreground line-clamp-2">
                     {desc}
                   </motion.p>
 
                   <motion.div>
-                    <Button variant="link" className="">
+                    <Button 
+                      variant="link" 
+                      className="p-0 h-auto mt-3"
+                    >
                       Learn More <ArrowRight />
                     </Button>
                   </motion.div>
                 </div>
 
                 {imgSrc && (
-                  <motion.figure>
+                  <motion.figure className="p-6 pt-0">
                     <img src={imgSrc} alt={title} className="img-cover" />
                   </motion.figure>
                 )}
