@@ -1,5 +1,5 @@
 import { JSX, useCallback, useState, useRef, MouseEvent } from "react";
-import { motion, SpringOptions, useSpring, useMotionValue, frame } from "motion/react";
+import { motion, useMotionValue, frame } from "motion/react";
 import * as variants from "@/lib/motionVariants"
 
 type FeatureCardProps = {
