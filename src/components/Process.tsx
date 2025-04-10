@@ -46,10 +46,15 @@ const Process = () => {
             {processData.list.map(({ icon, title, text }, index) => (
               <motion.div 
                 key={index}
-                className="flex flex-col gap-4 md:flex-row lg:gap-7"  
+                className="flex flex-col gap-4 md:flex-row lg:gap-7" 
+                variants={variants.staggerContainer} 
+                initial="start"
+                whileInView="end"
+                viewport={{ once: true }}
               >
                 <motion.div
                   className="w-16 h-16 grid place-items-center rounded-full border border-foreground/5 shrink-0"
+                  variants={variants.fadeInScale}
                 >
                   {icon}
                 </motion.div>
@@ -57,12 +62,14 @@ const Process = () => {
                 <div className="grid gap-2 md:gap-3">
                   <motion.h3 
                     className="text-xl lg:text-2xl"
+                    variants={variants.fadeInLeft}
                   >
                     {title}
                   </motion.h3>
 
                   <motion.p
                     className="text-sm text-muted-foreground"
+                    variants={variants.fadeInLeft}
                   >
                     {text}
                   </motion.p>
@@ -74,6 +81,10 @@ const Process = () => {
           <div className="max-lg:-order-1">
             <motion.figure
               className="mx-auto bg-primary rounded-3xl max-w-[580px] overflow-hidden p-8 pb-0 lg:p-12"
+              variants={variants.fadeInUp}
+              initial="start"
+              whileInView="end"
+              viewport={{ once: true }}
             >
               <img 
                 src={processBanner} 
