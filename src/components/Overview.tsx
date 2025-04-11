@@ -92,17 +92,17 @@ const Overview = () => {
             </Dialog> 
           </motion.div>
 
-          <div className="max-w-4xl mx-auto grid grid-cols-1 gap-5 mt-8 md:mt-16">
-            <motion.p>
+          <div className="max-w-4xl mx-auto grid grid-cols-1 gap-5 mt-8 md:mt-16 xl:grid-cols-[3fr,2.5fr] xl:items-center">
+            <motion.p className="section-title text-center lg:max-w-[30ch] lg:mx-auto xl:text-left ">
               {overviewData.listTitle}
             </motion.p>
 
-            <motion.div>
+            <motion.div className="flex flex-wrap justify-center gap-5 md:gap-10 xl:gap-8">
               {overviewData.list.map(({ title, text }, index) => (
-                <div key={index} className="">
-                  <h3>{title}</h3>
+                <div key={index} className="text-center">
+                  <h3 className="text-3xl">{title}</h3>
 
-                  <p>{text}</p>
+                  <p className="text-muted-foreground">{text}</p>
                 </div>
               ))}
             </motion.div>
