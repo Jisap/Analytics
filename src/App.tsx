@@ -6,6 +6,7 @@ import { ReactLenis } from 'lenis/react'
 import Process from "./components/Process"
 import Overview from "./components/Overview"
 import Review from "./components/Review"
+import Blog from "./components/Blog"
 
 
 
@@ -22,6 +23,7 @@ const App = () => {
           <Process />
           <Overview />
           <Review />
+          <Blog />
         </main>
       </div>
     </ReactLenis>
