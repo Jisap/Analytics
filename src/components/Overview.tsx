@@ -51,7 +51,13 @@ const Overview = () => {
         </div>
 
         <div>
-          <motion.div className="relative max-w-4xl mx-auto shadow-xl">
+          <motion.div 
+            variants={variants.fadeInScale}
+            initial="start"
+            whileInView="end"
+            viewport={{ once: true }}
+            className="relative max-w-4xl mx-auto shadow-xl"
+          >
             <figure>
               <img 
                 src={overviewBanner} 
@@ -93,17 +99,36 @@ const Overview = () => {
           </motion.div>
 
           <div className="max-w-4xl mx-auto grid grid-cols-1 gap-5 mt-8 md:mt-16 xl:grid-cols-[3fr,2.5fr] xl:items-center">
-            <motion.p className="section-title text-center lg:max-w-[30ch] lg:mx-auto xl:text-left ">
+            <motion.p 
+              variants={variants.fadeInRight}
+              initial="start"
+              whileInView="end"
+              viewport={{ once: true }}
+              className="section-title text-center lg:max-w-[30ch] lg:mx-auto xl:text-left "
+            >
               {overviewData.listTitle}
             </motion.p>
 
-            <motion.div className="flex flex-wrap justify-center gap-5 md:gap-10 xl:gap-8">
+            <motion.div 
+              variants={variants.staggerContainer}
+              initial="start"
+              whileInView="end"
+              viewport={{ once: true }}
+              className="flex flex-wrap justify-center gap-5 md:gap-10 xl:gap-8"
+            >
               {overviewData.list.map(({ title, text }, index) => (
-                <div key={index} className="text-center">
+                <motion.div 
+                  key={index} 
+                  className="text-center"
+                  variants={variants.fadeInLeft}
+                  initial="start"
+                  whileInView="end"
+                  viewport={{ once: true }}  
+                >
                   <h3 className="text-3xl">{title}</h3>
 
                   <p className="text-muted-foreground">{text}</p>
-                </div>
+                </motion.div>
               ))}
             </motion.div>
           </div>
