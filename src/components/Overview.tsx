@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { AspectRatio } from "./ui/aspect-ratio"
-import ReactPlayer from "react-player"
+import ReactPlayer from "react-player/youtube"
 
 
 const Overview = () => {
