@@ -1,9 +1,10 @@
 import Brand from "./components/Brand"
-import Feature from "./components/feature"
+import Feature from "./components/Feature"
 import Header from "./components/Header"
 import Hero from "./components/Hero"
 import { ReactLenis } from 'lenis/react'
 import Process from "./components/Process"
+import Overview from "./components/Overview"
 
 
 
@@ -18,6 +19,7 @@ const App = () => {
           <Brand />
           <Feature />
           <Process />
+          <Overview />
         </main>
       </div>
     </ReactLenis>
