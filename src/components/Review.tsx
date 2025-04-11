@@ -4,7 +4,6 @@ import { reviewData } from "@/constants"
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -39,31 +38,42 @@ const Review = () => {
           </motion.h2>
         </div>
 
-        <motion.div>
+        <motion.div
+          variants={variants.staggerContainer}
+          initial="start"
+          whileInView="end"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+        >
           {reviewData.reviewCard.map(({title, text, reviewAuthor, date}, index) => (
-            <motion.div key={index}>
-              <Card>
+            <motion.div 
+              key={index}
+              variants={variants.fadeInUp}
+            >
+              <Card className="relative">
                 <CardHeader>
-                  <CardTitle>
+                  <CardTitle className="text-lg">
                     {title}
                   </CardTitle>
                 </CardHeader>
 
                 <CardContent>
-                  <p>
+                  <p className="text-sm text-muted-foreground line-clamp-3">
                     {text}
                   </p>
                 </CardContent>
 
-                <CardFooter>
+                <CardFooter className="block">
                   <p>
                     {reviewAuthor}
                   </p>
 
-                  <p>{date}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {date}
+                  </p>
                 </CardFooter>
 
-                <div>
+                <div className="absolute bottom-0 right-3 opacity-[0.05]">
                   <Quote size={80}/>
                 </div>
               </Card>
