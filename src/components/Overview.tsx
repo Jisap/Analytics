@@ -4,7 +4,13 @@ import { overviewData } from "@/constants"
 import { overviewBanner } from "@/assets"
 import { Play } from "lucide-react"
 import { Button } from "./ui/button"
-
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { AspectRatio } from "./ui/aspect-ratio"
+import ReactPlayer from "react-player"
 
 
 const Overview = () => {
@@ -45,7 +51,7 @@ const Overview = () => {
         </div>
 
         <div>
-          <motion.div>
+          <motion.div className="relative max-w-4xl mx-auto shadow-xl">
             <figure>
               <img 
                 src={overviewBanner} 
@@ -55,10 +61,52 @@ const Overview = () => {
               />
             </figure>
 
-            <Button>
-              <Play />
-            </Button>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button
+                  variant="secondary"
+                  size="icon"
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
+                >
+                  <div className="sr-only">Play Video</div>
+                  <Play
+                    fill="#fff"
+                    size={50}
+                  />
+                </Button>
+              </DialogTrigger>
+
+              <DialogContent className="p-0 overflow-hidden max-w-[640px] xl:max-w-[1000px]">
+                <AspectRatio ratio={16 / 9}>
+                  <ReactPlayer
+                    url="https://youtu.be/cvd2XGJBgLg"
+                    style={{
+                      minWidth: '100%',
+                      maxWidth: '100%',
+                      minHeight: '100%',
+                      maxHeight: '100%',
+                    }}
+                  />
+                </AspectRatio>
+              </DialogContent>
+            </Dialog> 
           </motion.div>
+
+          <div className="max-w-4xl mx-auto grid grid-cols-1 gap-5 mt-8 md:mt-16">
+            <motion.p>
+              {overviewData.listTitle}
+            </motion.p>
+
+            <motion.div>
+              {overviewData.list.map(({ title, text }, index) => (
+                <div key={index} className="">
+                  <h3>{title}</h3>
+
+                  <p>{text}</p>
+                </div>
+              ))}
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>
