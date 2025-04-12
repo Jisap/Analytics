@@ -8,6 +8,13 @@ import {
   CardTitle, 
   CardFooter 
 } from "./ui/card"
+import { Badge } from "./ui/badge"
+import { 
+  Avatar,
+  AvatarImage,
+  AvatarFallback 
+} from "./ui/avatar"
+
 
 
 const Blog = () => {
@@ -43,26 +50,52 @@ const Blog = () => {
             className="section-text"
           >
             {blogData.sectionText}
-          </motion.p>
-
-          <motion.div>
-            {blogData.blogs.map(({
-              imgSrc,
-              badge,
-              title,
-              author: {
-                avatarSrc,
-                authorName,
-                publishDate,
-                readingTime,
-              },
-            }, index) => (
-              <motion.div key={index}>
-
-              </motion.div>
-            ))}
-          </motion.div>
+          </motion.p>     
         </div>
+
+        <motion.div>
+          {blogData.blogs.map(({
+            imgSrc,
+            badge,
+            title,
+            author: {
+              avatarSrc,
+              authorName,
+              publishDate,
+              readingTime,
+            },
+          }, index) => (
+            <motion.div key={index}>
+              <Card>
+                <CardHeader>
+                  <figure>
+                    <img 
+                      src={imgSrc} 
+                      alt={title} 
+                    /> 
+                  </figure>
+                </CardHeader>
+
+                <CardContent>
+                  <Badge>{badge}</Badge>
+
+                  <CardTitle>
+                    <a href="#">
+                      {title}
+                    </a>
+                  </CardTitle>
+                </CardContent>
+
+                <CardFooter>
+                  <Avatar>
+                    <AvatarImage src={avatarSrc} />
+                    <AvatarFallback>{authorName}</AvatarFallback>
+                  </Avatar>
+                </CardFooter>
+              </Card>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </div>
   )
