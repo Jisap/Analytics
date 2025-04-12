@@ -92,6 +92,19 @@ const Blog = () => {
                     <AvatarFallback>{authorName}</AvatarFallback>
                   </Avatar>
                 </CardFooter>
+
+                <div>
+                  <p>{authorName}</p>
+                  <div>
+                    <time dateTime={publishDate}>
+                      {publishDate}
+                    </time>
+
+                    <span></span>
+
+                    <p>{readingTime}</p>
+                  </div>
+                </div>
               </Card>
             </motion.div>
           ))}
