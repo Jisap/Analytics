@@ -55,6 +55,10 @@ const Blog = () => {
 
         <motion.div
           className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"
+          variants={variants.staggerContainer}
+          initial="start"
+          whileInView="end"
+          viewport={{ once: true }}
         >
           {blogData.blogs.map(({
             imgSrc,
@@ -67,7 +71,10 @@ const Blog = () => {
               readingTime,
             },
           }, index) => (
-            <motion.div key={index}>
+            <motion.div 
+              key={index}
+              variants={variants.fadeInUp}  
+            >
               <Card className="group">
                 <CardHeader>
                   <figure className="rounded-lg overflow-hidden">
