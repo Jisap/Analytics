@@ -30,6 +30,12 @@ const Footer = () => {
             ))}
           </div>
         </div>
+
+        <div>
+          <a href="" className="">
+            {footerData.copyright}
+          </a>
+        </div>
       </div>
     </footer>
   )
