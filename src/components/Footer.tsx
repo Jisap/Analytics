@@ -1,4 +1,4 @@
-import { motion } from "motion/react"
+
 import Logo from "./Logo"
 import { footerData } from "@/constants"
 
@@ -31,7 +31,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div>
+        <div className="flex justify-between mt-12 border-t border-gray-600/10 py-6">
           <a 
             href="https://youtube.com/codewithsadee" 
             target="_blank" 
@@ -41,7 +41,7 @@ const Footer = () => {
           </a>
 
           <div>
-            <ul>
+            <ul className="flex gap-5">
               {footerData.socialLinks.map(({href, icon}, index) => (
                 <li key={index}>
                   <a 
