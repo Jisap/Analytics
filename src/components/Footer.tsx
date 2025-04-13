@@ -32,9 +32,28 @@ const Footer = () => {
         </div>
 
         <div>
-          <a href="" className="">
+          <a 
+            href="https://youtube.com/codewithsadee" 
+            target="_blank" 
+            className=""
+          >
             {footerData.copyright}
           </a>
+
+          <div>
+            <ul>
+              {footerData.socialLinks.map(({href, icon}, index) => (
+                <li key={index}>
+                  <a 
+                    href={href}
+                    target="_blank"  
+                  >
+                    {icon}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </footer>
